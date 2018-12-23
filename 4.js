@@ -20,3 +20,4 @@ switch (a){
 	case 15: alert(15);
 }
 
+
