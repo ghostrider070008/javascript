@@ -1,10 +1,7 @@
-var tc=+prompt("Введите температуру по Цельсию");
-var tf=(9/5)*tc+32;
-alert("Температура по Фаренгейту="+tf);
-var admin, name;
-name="Василий";
-admin=name;
-alert(admin);
-var a=1000, b="108", c=a+b;
-alert(c);
-
+var a = 1, b = 1, c, d;
+c = ++a; alert(c); // 2
+d = b++; alert(d); // 1
+c = (2+ ++a); alert(c); // 5
+d = (2+ b++); alert(d); // 4
+alert(a); // 3
+alert(b); // 3
