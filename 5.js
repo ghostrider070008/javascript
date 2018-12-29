@@ -56,15 +56,21 @@ while (str_comp!=str_user){
 	popytka++;
 	//вывод
 	if (korov>0){
+		alert(korov+" корова"+" "+korova);
 	console.log(korov+" корова"+" "+korova);
 	}
 	if (byk>0){
+		alert(byk+" бык"+byk_str);
 	console.log(byk+" бык"+byk_str);
 	}
 	}
-	if (popytka>1)
+	if (popytka>1){
+		alert("Вы угадали число с "+popytka+" попыток");
 	console.log("Вы угадали число с "+popytka+" попыток");
-else
+	}
+else {
+	alert("Вы просто экстрасенс. Поздравляем!!!!")
 	console.log("Вы просто экстрасенс. Поздравляем!!!!");
-	
+
+	}
 
