@@ -1,4 +1,4 @@
-var x,p,k,i=0,j=0,n=[],t=1;
+var x,p,k,i=0,j=0,n=[],t=1,str_comp="",str_user="";
 /*x=prompt("Введите число из неповторяющихся цифр");
 x+=x+"";*/
 n[i]=Math.round(Math.random()*9+0);
@@ -18,10 +18,13 @@ if (n.indexOf(x)==-1){
 	}
 console.log(n[i]);
 	i++;
+}
+str_user=prompt('Введите четырехзначное число, чтобы угадать:');
+i=0;
+j=0;
+//while (i<n.length){
 
 }
-
-
 
 /*while (i<4){
 n[i]=Math.round(Math.random()*8+1);
