@@ -24,7 +24,7 @@ i=0;
 j=0;
 //while (i<n.length){
 
-}
+//}
 
 /*while (i<4){
 n[i]=Math.round(Math.random()*8+1);
