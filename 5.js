@@ -40,13 +40,13 @@ while (str_comp!=str_user){
 	//проверка быков
 	if (str_comp[i]==str_user[i]){
 		byk++;
-		byk_str+=" "+" цифра "+str_user[i];
+		byk_str+=" цифра "+"\""+str_user[i]+"\"";
 	}
 	//проверка коров
 	if (str_comp[i]!=str_user[i]){
 		if (str_comp.indexOf(str_user[i])!=-1){
 	korov++;
-	korova+=" "+str_user[i]+" цифра";
+	korova+=" цифра"+"\""+str_user[i]+"\"";
 	}
 	}
 	i++;
