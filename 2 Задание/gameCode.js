@@ -1,4 +1,5 @@
-var event, ok;
+var event, ok, question;
+
 
 do {//Выводим первый вопрос
     ok = false;
@@ -104,8 +105,40 @@ switch (event) {
     default:
         alert('Ошибка');
 }
-alert('Спасибо за игру');
 
+alert('Спасибо за игру');
+var my_ok=false;
+do {
+	ok = false;
+	do {
+	event=+prompt("Введите номер окна (от 1 до 4):"+ '\n -1- Закрыть окно'+'\n 1- Первый вопрос \n 2 - Второй вопрос\n 3 - Третий вопрос \n 4 - Четвертый вопрос');
+	if (event == -1) {
+	break;
+	}
+	else{
+		ok = isAnswer(4, event);
+		my_ok=false;
+		switch (event){
+			case 1: 
+			alert(works.a00+works.a1+works.a2);
+			break;
+			case 2:
+			alert(works.b00+works.b1+works.b2);
+			break;
+			case 3:
+			alert(works.c00+works.c1+works.c2);
+			break;
+			case 4: 
+			alert(works.d00+works.d1+works.d2);
+			break;
+			case -1:
+			my_ok=true;
+			break;
+		}
+	}
+	
+	} while (!my_ok);
+} while (!ok);
 //------------------------------------------
 function isAnswer(q, event) {
     if (isNaN(event) || !isFinite(event)) {
