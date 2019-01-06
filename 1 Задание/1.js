@@ -23,5 +23,5 @@ console.log("\'единицы\' : "+number.units+", \'десятки\' : "+numbe
 else {
 	console.log('Число не входит в заданный диапазон от 0 до 999');
 	number={};
-	console.log(number);
 }
+console.log(number);
