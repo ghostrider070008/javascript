@@ -10,7 +10,7 @@ ok = conclusionQuestion(q_num);
 	} while (ok == false);
 correct = qwestionsChek(answer);
 if (correct == false){
-	alert ('Вы закончили игру с выигрышом в 0 рублей\n Правильный ответ на вопрос был: \n'+qwestions[q_num].correct_answer+"\nСпасибо за игру!");
+	alert ('Вы проиграли.\n Правильный ответ на вопрос был:\n'+qwestions[q_num].correct_answer+"\nСпасибо за игру!");
 	break;
 	}
 	
@@ -46,16 +46,19 @@ function conclusionQuestion(q_num){
 	//answer = +prompt("Сумма вопроса:"+qwestions[q_num].summa+"\n"+qwestions[q_num].text_q+"\n"+qwestions[q_num].a1+"\n"+qwestions[q_num].a2+"\n"+qwestions[q_num].a3+"\n"+qwestions[q_num].a4);
 	do {
 	ok=false;
-	answer = +prompt("Вопрос на : "+qwestions[q_num].summa+' рублей'+"\n"+qwestions[q_num].text_q+"\n"+qwestions[q_num].a1+"\n"+qwestions[q_num].a2+"\n"+qwestions[q_num].a3+"\n"+qwestions[q_num].a4);
+	answer = +prompt("Введите: \n \"-1\" - Для выхода из игры\n \"-2\" - Для взятия денег, за предыдущий вопрос \nВопрос на : "+qwestions[q_num].summa+' рублей'+"\n"+qwestions[q_num].text_q+"\n"+qwestions[q_num].a1+"\n"+qwestions[q_num].a2+"\n"+qwestions[q_num].a3+"\n"+qwestions[q_num].a4);
 	//answer=+prompt(qwestions[1].text_q2+"\n"+qwestions[1].a1+"\n"+qwestions[1].a2+"\n"+qwestions[1].a3+"\n"+qwestions[1].a4);
 	if (answer == -1) {
 		alert('Вы закончили игру с выигрышом в 0 рублей');
 		break;
 	}
-	if (answer == -2) {
-		alert('Вы закончили игру с выигрышом в '+ qwestions[q_num-1].summa+' рублей');
+	if ((answer == -2) && (q_num>0)) {
+		alert('Вы решили забрать деньги!\nВаш выигрыш составил '+ qwestions[q_num-1].summa+' рублей\nИгра закончена. Спасибо за игру!');
 		break;
 }	
+	if ((answer == -2) && (q_num==0)) {
+	alert('Вы не можете забрать деньги на первом вопросе игры!\nПожалуйста ответьте правильно хотя бы на один вопрос, чтобы выиграть минимальную сумму в 500 рублей!');
+	}
 	else {
 		ok = isAnswer(4, answer);
 	}
