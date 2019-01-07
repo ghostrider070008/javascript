@@ -138,6 +138,9 @@ do {
 	}
 	
 	} while (!my_ok);
+	if (event == -1) {
+	break;
+	}
 } while (!ok);
 //------------------------------------------
 function isAnswer(q, event) {
