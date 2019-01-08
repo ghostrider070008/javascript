@@ -1,4 +1,4 @@
-var answer, ok, correct, correct_str;
+var answer, ok, correct;
 q_num=0;
 correct=true;
 alert("Приветствуем тебя, Дорогой друг на игре: \n \"Кто хочет стать миллионером!\"")
