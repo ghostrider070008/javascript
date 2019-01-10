@@ -1,39 +1,23 @@
-var number = {
-	//единицы
-		units: function (my_numberfun ) {
-	this.units = my_numberfun % 10;
-},
-//десятки
-	decades: function (my_numberfun ) {
-	this.decades = parseInt((my_numberfun/10) % 10);
-},
-//сотни
-	hundreds: function (my_numberfun ) {
-	this.hundreds = parseInt((my_numberfun/100) % 10);
+var i, div_w,div_b;
+
+for (i=0; i<=15; i++){
+	div_w = document.createElement("div");// белая ячейка
+	div_w.width = "50 px";
+	div_w.height = "50 px";
+	div_w.backgroundColor = "black";
+	var elemText = document.createTextNode("Привет мир");
+	div_w.appendChild(elemText);
+	console.log(div_w);
+	
 }
-}
-var ok;
-do {
-var my_input=+prompt("Введите число от 0 до 999:");//ввод числа
-/*while ((my_input<0) || (my_input>999)){
-	alert("Число должно находиться в промежутке от 0 до 999");
-	my_input=+prompt("Введите число от 0 до 999:");
-};*/
-if ((my_input >0) && (my_input<=999)){ 
-number.units(my_input);
-number.decades(my_input);
-number.hundreds(my_input);
-console.log("\'единицы\' : "+number.units+", \'десятки\' : "+number.decades+", \'сотни\' : "+number.hundreds);
-ok = true;
-};
-if (isNaN(my_input) || !isFinite(my_input)) {
-	ok = false;
-        alert('Вы ввели недопустимый символ')
-};
-if ((my_input>999) || (my_input<0)){
-	console.log('Число не входит в заданный диапазон от 0 до 999');
-	number={};
-	break;
-}
-}while (!ok);
-console.log(number);
+var articleDiv = document.querySelector("div.article");
+// создаем элемент
+var elem = document.createElement("h2");
+// создаем для него текст
+var elemText = document.createTextNode("Привет мир");
+// добавляем текст в элемент в качестве дочернего элемента
+elem.appendChild(elemText);
+// получаем первый элемент, перед которым будет идти добавление
+var firstElem = articleDiv.firstChild.nextSibling;
+// добавляем элемент в блок div перед первым узлом
+articleDiv.insertBefore(elem, firstElem);
