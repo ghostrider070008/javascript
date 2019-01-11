@@ -30,7 +30,6 @@ width: 50px;
 background: white;
 border: 1px solid black;
 text-align: center;
-line-height: 65px;
 font-size: 30px;
 }}
 </style>
@@ -144,18 +143,21 @@ k++;
 }
 j++;
 }*/
-for (i = 0; i<=10;i++){
+tn = text_number.length;
+for (i = 0; i<10;i++){
 switch (i){
 	// перва строка с буквами
 	case 0: for (j = 0; j<=10; j++){
 	if ((j==0) || (j==10)){
 	div_clear = document.createElement("div");
 	div_clear.className = "clearDiv";
+	div_clear.style.height = "30px";
 	conteiner.appendChild(div_clear);
 	};
 	if ((j>1) && (j<10)){
 	div_clear = document.createElement("div");
 	div_clear.className = "clearDiv";
+	div_clear.style.height = "30px";
 	div_clear.innerHTML = letter[k];
 	div_clear.style.transform = "rotate(180deg)";
 	conteiner.appendChild(div_clear);
@@ -166,7 +168,6 @@ switch (i){
 	};break;
 	//вторая строка с фигурами
 	case 1: 
-	tn = text_number.length;
 	for (j = 0; j<=10; j++){
 	//первый столбец
 	if (j==0){
@@ -183,6 +184,7 @@ switch (i){
 	div_clear.innerHTML  = text_number[tn-1];
 	div_clear.style.transform = "rotate(180deg)";
 	conteiner.appendChild(div_clear);
+	tn--;
 	}
 	if ((j>1) && (j<10)) {
 		if (j%2) {
@@ -201,8 +203,217 @@ switch (i){
 	};	
 	};
 	break;
-	
+	case 2: 
+	for (j = 0; j<=10; j++){
+	if (j==0){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	conteiner.appendChild(div_clear);
+		};
+		
+	// последний столбец
+	if (j==10){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	tn--;
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	div_clear.innerHTML  = figur_black[fb];
+	conteiner.appendChild(div_clear);
+	}
+		else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	div_clear.innerHTML  = figur_black[fb];
+	conteiner.appendChild(div_clear);
+	};
+	};	
+	};
+	break;
+	case 3:
+	emptyCell();
+	break;
+	case 4:
+	emptyCell_reverse();
+	break;
+	case 5:
+	emptyCell();
+	break;
+	case 6:
+	emptyCell_reverse();
+	break;
+	case 7:
+	fb = 0;
+	cellFigure_pesh();
+	fb++;
+	break;
+	case 8: 
+	cellFigure_figure();
+	break;
+	case 9:
+	k = 0;
+	for (j = 0; j<=10; j++){
+	if ((j==0) || (j==10)){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.style.height = "30px";
+	conteiner.appendChild(div_clear);
+	};
+	if ((j>1) && (j<10)){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.style.height = "30px";
+	div_clear.innerHTML = letter[k];
+	conteiner.appendChild(div_clear);
+	console.log(div_clear);
+	k++;
 }
+	
+	};break;
+	}
+}
+//функция генерирования пустых ячеек;
+function emptyCell(){
+	for (j=1;j<=10;j++){
+	if (j==1) {
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	conteiner.appendChild(div_clear);
+	};
+	if (j==10){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	tn--;
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	conteiner.appendChild(div_clear);
+	}
+		else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	conteiner.appendChild(div_clear);
+	};
+	};
+	}
+}
+//функция генерации пустых ячеек обратная
+function emptyCell_reverse(){
+	for (j=1;j<=10;j++){
+	if (j==1) {
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	conteiner.appendChild(div_clear);
+	};
+	if (j==10){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	tn--;
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	conteiner.appendChild(div_clear);
+	}
+		else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	conteiner.appendChild(div_clear);
+	};
+	};
+	}
+}
+
+// функция генерации ячеек с фигурами пешка
+function cellFigure_pesh(){
+for (j = 0; j<=10; j++){
+	if (j==0){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	conteiner.appendChild(div_clear);
+		};
+		
+	// последний столбец
+	if (j==10){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	tn--;
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	div_clear.innerHTML  = figur_white[fb];
+	conteiner.appendChild(div_clear);
+	}
+		else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	div_clear.innerHTML  = figur_white[fb];
+	conteiner.appendChild(div_clear);
+	};
+	};	
+	};
+}
+
+//функция генерации ячеек с фигурами
+function cellFigure_figure(){
+for (j = 0; j<=10; j++){
+	if (j==0){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	conteiner.appendChild(div_clear);
+		};
+		
+	// последний столбец
+	if (j==10){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	tn--;
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	div_clear.innerHTML  = figur_white[fb];
+	conteiner.appendChild(div_clear);
+	}
+		else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	div_clear.innerHTML  = figur_white[fb];
+	conteiner.appendChild(div_clear);
+	};
+	fb++;
+	};
+		console.log(fb);
+	};
 }
 
 </script>
