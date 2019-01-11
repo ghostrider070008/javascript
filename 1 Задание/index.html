@@ -2,29 +2,47 @@
 <html>
 <style>
 #conteiner {
-width: 500px;
-height: 500px;
+width: 550px;
+height: 550px;
 }
 .doska {
 float: left;
 height: 50px;
 width: 50px;
-background: silver;
+background: orange;
+border: 1px solid black;
+font-size: 30px;
+text-align: center;
 }
 .doska_b {
 float: left;
 height: 50px;
 width: 50px;
-background: orange;
+background: white;
+border: 1px solid black;
+font-size: 30px;
+text-align: center;
 }
+.clearDiv{
+float: left;
+height: 50px;
+width: 50px;
+background: white;
+border: 1px solid black;
+text-align: center;
+line-height: 65px;
+font-size: 30px;
+}}
 </style>
 <head>
     <meta charset="utf-8" />
+	<script src="text.js"></script>
 </head>
 <body>
 <div id="conteiner">
 </div>
 <script>
+/*
 var div_w = document.createElement("div");
 div_w.className = "doska";
 conteiner.appendChild(div_w);
@@ -60,7 +78,133 @@ div_b.className = "doska_b";
 conteiner.appendChild(div_b);
 var div_w = document.createElement("div");
 div_w.className = "doska";
-conteiner.appendChild(div_w);
+conteiner.appendChild(div_w);*/
+
+var i = 0, div_w, div_clear, div_b;
+j = 0;
+// верхняя строка
+/*
+for (i=1; i<=10;i++){
+if ((i==1) || (i==10)){
+div_clear = document.createElement("div");
+div_clear.className = "clearDiv";
+conteiner.appendChild(div_clear);
+};
+if ((i>1) && (i<10)){
+div_clear = document.createElement("div");
+div_clear.className = "clearDiv";
+div_clear.innerHTML = text_number[j];
+div_clear.style.transform = "rotate(180deg)";
+conteiner.appendChild(div_clear);
+console.log(div_clear);
+j++;
+}
+};
+j = 0;
+// вторая строка
+k = 0;
+/*
+for (var l=0; l<8;l++){
+for (i = 0; i<=10;i++){
+if (i==1){
+div_clear = document.createElement("div");
+div_clear.className = "clearDiv";
+div_clear.innerHTML  = letter[j];
+conteiner.appendChild(div_clear);
+};
+if (i==10){
+div_clear = document.createElement("div");
+div_clear.className = "clearDiv";
+div_clear.innerHTML  = letter[j];
+div_clear.style.transform = "rotate(180deg)";
+conteiner.appendChild(div_clear);
+};
+if ((i>1) && (i<10)) {
+	if (i%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	div_clear.innerHTML  = figur_black[k];
+	conteiner.appendChild(div_clear);
+	}
+	else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	div_clear.innerHTML  = figur_black[k];
+	conteiner.appendChild(div_clear);
+	}
+	k++;
+	/*
+div_clear = document.createElement("div");
+div_clear.className = "clearDiv";
+div_clear.innerHTML  = figur_black[k];
+conteiner.appendChild(div_clear);
+k++;
+}
+
+}
+j++;
+}*/
+for (i = 0; i<=10;i++){
+switch (i){
+	// перва строка с буквами
+	case 0: for (j = 0; j<=10; j++){
+	if ((j==0) || (j==10)){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	conteiner.appendChild(div_clear);
+	};
+	if ((j>1) && (j<10)){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML = letter[k];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	console.log(div_clear);
+	k++;
+}
+	
+	};break;
+	//вторая строка с фигурами
+	case 1: 
+	tn = text_number.length;
+	for (j = 0; j<=10; j++){
+	//первый столбец
+	if (j==0){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	conteiner.appendChild(div_clear);
+		};
+		
+	// последний столбец
+	if (j==10){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.innerHTML  = text_number[tn-1];
+	div_clear.style.transform = "rotate(180deg)";
+	conteiner.appendChild(div_clear);
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+	div_clear.innerHTML  = figur_black[fb];
+	conteiner.appendChild(div_clear);
+	}
+		else {
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+	div_clear.innerHTML  = figur_black[fb];
+	conteiner.appendChild(div_clear);
+	};
+	fb++;
+	};	
+	};
+	break;
+	
+}
+}
+
 </script>
 </body>
 </html>
