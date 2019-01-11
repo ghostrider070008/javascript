@@ -259,24 +259,8 @@ switch (i){
 	break;
 	case 9:
 	k = 0;
-	for (j = 0; j<=10; j++){
-	if ((j==0) || (j==10)){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.style.height = "30px";
-	conteiner.appendChild(div_clear);
-	};
-	if ((j>1) && (j<10)){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.style.height = "30px";
-	div_clear.innerHTML = letter[k];
-	conteiner.appendChild(div_clear);
-	console.log(div_clear);
-	k++;
-}
-	
-	};break;
+	generationLetter();
+	break;
 	}
 }
 //функция генерирования пустых ячеек;
@@ -415,6 +399,31 @@ for (j = 0; j<=10; j++){
 		console.log(fb);
 	};
 }
+
+//Функция генерации нижнего поля с буквами
+function generationLetter(){
+for (j = 0; j<=10; j++){
+	if ((j==0) || (j==10)){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.style.height = "30px";
+	conteiner.appendChild(div_clear);
+	};
+	if ((j>1) && (j<10)){
+	div_clear = document.createElement("div");
+	div_clear.className = "clearDiv";
+	div_clear.style.height = "30px";
+	div_clear.innerHTML = letter[k];
+	conteiner.appendChild(div_clear);
+	console.log(div_clear);
+	k++;
+}
+	
+	};
+}
+
+
+
 
 </script>
 </body>
