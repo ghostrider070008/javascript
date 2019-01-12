@@ -49,6 +49,7 @@ font-size: 30px;
 	<script src="text.js"></script>
 </head>
 <body>
+<a href="#" onclick="generateСhessboard()">Сгенерировать шахматную доску</a><br>
 <div id="conteiner">
 </div>
 <script>
@@ -57,103 +58,19 @@ function generateСhessboard(){
 var i = 0, div_w, div_clear, div_b;
 j = 0;
 tn = text_number.length;
+fb = 0;
 for (i = 0; i<10;i++){
 switch (i){
 	// перва строка с буквами
 	case 0: 
-	/*
-	for (j = 0; j<=10; j++){
-	if ((j==0) || (j==10)){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.style.height = "30px";
-	conteiner.appendChild(div_clear);
-	};
-	if ((j>1) && (j<10)){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.style.height = "30px";
-	div_clear.innerHTML = letter[k];
-	div_clear.style.transform = "rotate(180deg)";
-	conteiner.appendChild(div_clear);
-	console.log(div_clear);
-	k++;
-}
-	
-	};
-	*/
 	firstLetter();
 	break;
 	//вторая строка с фигурами
 	case 1: 
-	for (j = 0; j<=10; j++){
-	//первый столбец
-	if (j==0){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.innerHTML  = text_number[tn-1];
-	conteiner.appendChild(div_clear);
-		};
-		
-	// последний столбец
-	if (j==10){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.innerHTML  = text_number[tn-1];
-	div_clear.style.transform = "rotate(180deg)";
-	conteiner.appendChild(div_clear);
-	tn--;
-	}
-	if ((j>1) && (j<10)) {
-		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
-	div_clear.innerHTML  = figur_black[fb];
-	conteiner.appendChild(div_clear);
-	}
-		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
-	div_clear.innerHTML  = figur_black[fb];
-	conteiner.appendChild(div_clear);
-	};
-	fb++;
-	};	
-	};
+	generateTwoLine();
 	break;
 	case 2: 
-	for (j = 0; j<=10; j++){
-	if (j==0){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.innerHTML  = text_number[tn-1];
-	conteiner.appendChild(div_clear);
-		};
-		
-	// последний столбец
-	if (j==10){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.innerHTML  = text_number[tn-1];
-	div_clear.style.transform = "rotate(180deg)";
-	conteiner.appendChild(div_clear);
-	tn--;
-	}
-	if ((j>1) && (j<10)) {
-		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
-	div_clear.innerHTML  = figur_black[fb];
-	conteiner.appendChild(div_clear);
-	}
-		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
-	div_clear.innerHTML  = figur_black[fb];
-	conteiner.appendChild(div_clear);
-	};
-	};	
-	};
+	generateThreeLine();
 	break;
 	case 3:
 	emptyCell();
@@ -189,38 +106,79 @@ function generateTwoLine(){
 for (j = 0; j<=10; j++){
 	//первый столбец
 	if (j==0){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.innerHTML  = text_number[tn-1];
-	conteiner.appendChild(div_clear);
+	generateExtremeCell (text_number,tn);
 		};
 		
 	// последний столбец
 	if (j==10){
-	div_clear = document.createElement("div");
-	div_clear.className = "clearDiv";
-	div_clear.innerHTML  = text_number[tn-1];
-	div_clear.style.transform = "rotate(180deg)";
-	conteiner.appendChild(div_clear);
+	generateExtremeCellRotate (text_number, tn);
 	tn--;
 	}
 	if ((j>1) && (j<10)) {
 		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
-	div_clear.innerHTML  = figur_black[fb];
-	conteiner.appendChild(div_clear);
+	//div_clear = document.createElement("div");
+	//div_clear.className = "doska";
+	generationWhiteCell();
+	//div_clear.innerHTML  = figur_black[fb];
+	//conteiner.appendChild(div_clear);
+	generationFigurDiv(figur_black,fb);
 	}
 		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
-	div_clear.innerHTML  = figur_black[fb];
-	conteiner.appendChild(div_clear);
+	//div_clear = document.createElement("div");
+	//div_clear.className = "doska_b";
+	generationBlackCell();
+	//div_clear.innerHTML  = figur_black[fb];
+	//conteiner.appendChild(div_clear);
+	generationFigurDiv(figur_black,fb);
 	};
 	fb++;
 	};	
 	};
 };
+//генерация третьей строки с белой пешкой
+function generateThreeLine(){
+for (j = 0; j<=10; j++){
+	//первый столбец
+	if (j==0){
+	generateExtremeCell (text_number,tn);
+		};
+		
+	// последний столбец
+	if (j==10){
+	generateExtremeCellRotate (text_number, tn);
+	tn--;
+	}
+	if ((j>1) && (j<10)) {
+		if (j%2) {
+	generationBlackCell();	
+	generationFigurDiv(figur_black,fb);
+	}
+		else {
+	generationWhiteCell();
+	generationFigurDiv(figur_black,fb);
+	};
+	};	
+	};
+};
+
+//функция генерации дива с фигурой
+
+function generationFigurDiv(figur, f){
+	div_clear.innerHTML  = figur[f];
+	conteiner.appendChild(div_clear);
+}
+
+//Фунция генерация белой ячейки
+function generationWhiteCell(){
+	div_clear = document.createElement("div");
+	div_clear.className = "doska";
+}
+
+//функция генерации черной ячейки
+function generationBlackCell(){
+	div_clear = document.createElement("div");
+	div_clear.className = "doska_b";
+}
 
 //функция генерирования пустых ячеек;
 function emptyCell(){
@@ -234,13 +192,11 @@ function emptyCell(){
 	}
 	if ((j>1) && (j<10)) {
 		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
+	generationWhiteCell();
 	conteiner.appendChild(div_clear);
 	}
 		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
+	generationBlackCell();
 	conteiner.appendChild(div_clear);
 	};
 	};
@@ -258,13 +214,11 @@ function emptyCell_reverse(){
 	}
 	if ((j>1) && (j<10)) {
 		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
+	generationBlackCell();
 	conteiner.appendChild(div_clear);
 	}
 		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
+	generationWhiteCell();
 	conteiner.appendChild(div_clear);
 	};
 	};
@@ -285,16 +239,12 @@ for (j = 0; j<=10; j++){
 	}
 	if ((j>1) && (j<10)) {
 		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
-	div_clear.innerHTML  = figur_white[fb];
-	conteiner.appendChild(div_clear);
+	generationWhiteCell();
+	generationFigurDiv(figur_white,fb);
 	}
 		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
-	div_clear.innerHTML  = figur_white[fb];
-	conteiner.appendChild(div_clear);
+	generationBlackCell();
+	generationFigurDiv(figur_white,fb);
 	};
 	};	
 	};
@@ -314,16 +264,12 @@ for (j = 0; j<=10; j++){
 	}
 	if ((j>1) && (j<10)) {
 		if (j%2) {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska_b";
-	div_clear.innerHTML  = figur_white[fb];
-	conteiner.appendChild(div_clear);
+	generationBlackCell();
+	generationFigurDiv(figur_white,fb);
 	}
 		else {
-	div_clear = document.createElement("div");
-	div_clear.className = "doska";
-	div_clear.innerHTML  = figur_white[fb];
-	conteiner.appendChild(div_clear);
+	generationWhiteCell();
+	generationFigurDiv(figur_white,fb);
 	};
 	fb++;
 	};
@@ -433,8 +379,6 @@ function generateExtremeCellRotate (text_number, tn){
 	conteiner.appendChild(div_clear);
 }
 </script>
-
-<a href="#" onclick="generateСhessboard()">Сгенерировать шахматную доску</a><br>
 </body>
 </html>
 
