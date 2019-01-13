@@ -1,4 +1,16 @@
-.img_style{
-	width = 500 px;
-	height 300 px;
+.img_style {
+	float: left;
+	width: 400px;
+	height: 250px;
+	margin-right: 10px;
+}
+div{
+	
+}
+.img_max_style {
+	margin-top: 100px;
+	margin-right: auto;
+	margin-left: 50px;
+	width: 900px;
+	height: 750px;
 }
