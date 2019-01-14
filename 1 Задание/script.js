@@ -1,10 +1,12 @@
+var div_clear, image_max;
+
 function generationImg(){
 var i = 0, images;
 
 for (i = 0; i<Image.length; i++){
 	generationImgMin(Image, i);
 }
-generationDivImage();
+
 }
 
 function generationImgMin(Image, i){
@@ -12,6 +14,14 @@ function generationImgMin(Image, i){
 	images.className = "img_style";
 	images.id = i;
 	images.alt = Image[i].alt;
+	images.onclick = function (){
+		img_click = document.createElement('img');
+		img_click.className = "img_max_style";
+		img_click.alt = Image[i].alt;
+		img_click.src = Image[i].src_img;
+		conteiner.appendChild(img_click);
+		console.log(img_click);
+	}
 	images.src = Image[i].src_img;
 	conteiner.appendChild(images);
 	console.log(images);
