@@ -1,3 +1,10 @@
+function f(id){
+var product1 = document.getElementsByClassName("car");
+var productName1 = document.createElement("h3");
+productName1.textContent = product[id].name;
+product1[0].appendChild(productName1);
+}
+/*
 var div_clear, image_max;
 //функция генерации изображения основная
 function generationImg(){
@@ -56,3 +63,4 @@ console.log(linkNext[1]);
 div_rod[1].insertBefore(img, linkNext[1]);
  }
 }
+*/
