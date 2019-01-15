@@ -16,4 +16,8 @@
 }
 .product{
 	float: left;
+	margin-right: 20px
+}
+.car{
+	border: 1px solid blue;
 }
