@@ -1,0 +1,19 @@
+.productLink {
+	margin-left: 40%;
+}
+
+.productName {
+	width: 200px;
+	text-align: center;
+}
+.productDiv{
+	clear: both;
+}
+.productImg {
+	clear: both;
+	width: 200px;
+	height: 200px;
+}
+.product{
+	float: left;
+}
