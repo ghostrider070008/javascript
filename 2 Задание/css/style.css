@@ -21,3 +21,8 @@
 .car{
 	border: 1px solid blue;
 }
+.nametovarCar{
+	width: 35%;
+	margin-bottom: 10px;
+	margin-top: 0;
+}
