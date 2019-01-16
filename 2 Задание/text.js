@@ -7,5 +7,5 @@ productCar = [
 { name : "Официальный игровой мяч 2018 FIFA", price: 3000, col: 0},
 { name : "3D-пазл стадиона Камп Ноу", price: 1800, col: 0},
 { name : "Брелок Арсенал 1892 овальный", price: 300, col: 0}
-], totalSum = 0,sumid,totaltr,totaltd;
+], totalSum = 0,sumid,totaltr,totaltd,totaltdName, total,totalSum, str_product, tdName, tdCol, tdPrice, tdSum, car;
 
