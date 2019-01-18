@@ -108,24 +108,28 @@ function move() {
 
     // Определяем новую точку
     if (direction == 'x-') {
+		//проверка на конец поля влево
 		if ((coord_x - 1) < 0){
 			coord_x = FIELD_SIZE_X;
 		}
         new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x - 1))[0];
     }
     else if (direction == 'x+') {
+		//проверка на конец поля впрво
 		if ((coord_x + 1) > (FIELD_SIZE_X-1)){
 			coord_x = 0;
 		}
         new_unit = document.getElementsByClassName('cell-' + (coord_y) + '-' + (coord_x + 1))[0];
     }
     else if (direction == 'y+') {
+		//проверка на конец поля верх
 		if ((coord_y - 1) < 0){
 			coord_y = FIELD_SIZE_Y;
 		}
         new_unit = document.getElementsByClassName('cell-' + (coord_y - 1) + '-' + (coord_x))[0];
     }
     else if (direction == 'y-') {
+		//проверка на конец поля низ
 		if ((coord_y + 1) > (FIELD_SIZE_Y-1)){
 			coord_y = 0;
 		}
