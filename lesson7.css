@@ -1,3 +1,10 @@
+h2 {
+	display: inline-block
+}
+.scoreh2{
+	margin-left: 30px;
+	
+}
 #snake-field{
     display: inline-block;
 }

@@ -8,6 +8,8 @@ var gameIsRunning = false; // Запущена ли игра
 var snake_timer; // Таймер змейки
 var food_timer; // Таймер для еды
 var score = 0; // Результат
+var score_real; // отвечает за вывод очков в реальном времени
+	
 
 function init() {
     prepareGameField(); // Генерация поля
@@ -190,6 +192,9 @@ function haveFood(unit) {
         createFood();
 
         score++;
+	//вывод очков в реальном времени	
+		score_real = document.getElementsByClassName("scoreh2")[0];
+		score_real.innerHTML = score;
     }
     return check;
 }
