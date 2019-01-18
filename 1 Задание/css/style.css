@@ -1,0 +1,25 @@
+.img_style {
+	float: left;
+	width: 400px;
+	height: 250px;
+	margin-right: 10px;
+}
+.img_style:hover{
+	cursor: pointer;
+}
+
+.img_style:nth-child(3)  {
+	float: left;
+	width: 400px;
+	height: 250px;
+	margin-right: 0;
+}
+div{
+	
+}
+.img_max_style {
+	margin-top: 100px;
+	margin-left: 10%;
+	width: 1024px;
+	height: 768px;
+}
