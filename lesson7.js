@@ -70,7 +70,7 @@ function startGame() {
 
     snake_timer = setInterval(move, SNAKE_SPEED);//каждые 200мс запускаем функцию move
     setTimeout(createFood, 5000);
-	setTimeout(creatHindrance, 7000);
+	setTimeout(creatHindrance, 5000);
 }
 
 /**
@@ -191,7 +191,7 @@ function haveFood(unit) {
     if (unit_classes.includes('food-unit')) {
         check = true;
         createFood();
-
+		setTimeout(creatHindrance, 3000);
         score++;
 	//вывод очков в реальном времени	
 		score_real = document.getElementsByClassName("scoreh2")[0];
@@ -212,7 +212,7 @@ function haveHindrance(unit) {
     // Если препятствие
     if (unit_classes.includes('hindrance-unit')) {
         check = true;
-		finishTheGame();
+		//finishTheGame();
     }
     return check;
 }
@@ -259,14 +259,39 @@ function creatHindrance(){
         var hindrance_cell_classes = hindrance_cell.getAttribute('class').split(' ');
 		
         if (!hindrance_cell_classes.includes('snake-unit')) {
-            var classes = '';
+           var classes = '';
+            for (var i = 0; i < hindrance_cell_classes.length; i++) {
+                classes += hindrance_cell_classes[i] + ' ';
+            }
 			hindrance_cell.setAttribute('class', classes + 'hindrance-unit');
 			hindranceCreated = true;
 		
 		}	
 	}
-	setTimeout(creatHindrance, 10000);
+	setTimeout(deleteHindrance, 20000);
+	
 }
+
+/**
+* Удаление препятствия
+*/
+
+function deleteHindrance(){
+	var hindrance_cell = document.getElementsByClassName('hindrance-unit');
+	var random = hindrance_cell.length-1;
+	var deleteCell = parseInt(Math.random()*random);
+		hindrance_cell_classes = hindrance_cell[deleteCell].getAttribute('class').split(' '); 
+		hindrance_cell_classes.splice(2,1);
+	var classes = '';
+		for (i = 0; i < hindrance_cell_classes.length; i++){
+			classes += hindrance_cell_classes[i] + ' ';
+		}
+		
+		hindrance_cell[deleteCell].setAttribute('class',classes); 
+		
+}
+	
+
 
 /**
  * Изменение направления движения змейки
