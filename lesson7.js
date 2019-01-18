@@ -305,6 +305,7 @@ function finishTheGame() {
     gameIsRunning = false;
     clearInterval(snake_timer);
     alert('Вы проиграли! Ваш результат: ' + score.toString());
+	location.reload();
 }
 
 /**
