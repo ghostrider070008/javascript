@@ -33,6 +33,10 @@ td.game-table-cell{
 .food-unit{
     background-color: red;
 }
+.hindrance-unit{
+	background-image: URL('bomb1.png');
+	background-position: center;
+}
 .buttons{
     display: inline-block;
 }

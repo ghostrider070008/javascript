@@ -70,6 +70,7 @@ function startGame() {
 
     snake_timer = setInterval(move, SNAKE_SPEED);//каждые 200мс запускаем функцию move
     setTimeout(createFood, 5000);
+	setTimeout(creatHindrance, 7000);
 }
 
 /**
@@ -142,7 +143,7 @@ function move() {
     // 1) new_unit не часть змейки
     // 2) Змейка не ушла за границу поля
     //console.log(new_unit);
-    if (!isSnakeUnit(new_unit) && new_unit !== undefined) {
+    if (!isSnakeUnit(new_unit) && (new_unit !== undefined) && !haveHindrance(new_unit))  {
         // Добавление новой части змейки
         new_unit.setAttribute('class', new_unit.getAttribute('class') + ' snake-unit');
         snake.push(new_unit);
@@ -198,6 +199,23 @@ function haveFood(unit) {
     }
     return check;
 }
+/**
+ * проверка на препятствие
+ * @param unit
+ * @returns {boolean}
+ */
+function haveHindrance(unit) {
+    var check = false;
+
+    var unit_classes = unit.getAttribute('class').split(' ');
+
+    // Если препятствие
+    if (unit_classes.includes('hindrance-unit')) {
+        check = true;
+		finishTheGame();
+    }
+    return check;
+}
 
 /**
  * Создание еды
@@ -224,6 +242,30 @@ function createFood() {
             foodCreated = true;
         }
     }
+}
+
+/**
+* Создание препятствия
+*/
+function creatHindrance(){
+	var hindranceCreated = false;
+
+    while (!hindranceCreated) { //пока препятствия не создали
+        // рандом
+        var hindrance_x = Math.floor(Math.random() * FIELD_SIZE_X);
+        var hindrance_y = Math.floor(Math.random() * FIELD_SIZE_Y);
+
+        var hindrance_cell = document.getElementsByClassName('cell-' + hindrance_y + '-' + hindrance_x)[0];
+        var hindrance_cell_classes = hindrance_cell.getAttribute('class').split(' ');
+		
+        if (!hindrance_cell_classes.includes('snake-unit')) {
+            var classes = '';
+			hindrance_cell.setAttribute('class', classes + 'hindrance-unit');
+			hindranceCreated = true;
+		
+		}	
+	}
+	setTimeout(creatHindrance, 10000);
 }
 
 /**
